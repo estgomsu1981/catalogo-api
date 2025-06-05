@@ -5,6 +5,15 @@ from fastapi.security import OAuth2PasswordRequestForm
 from auth import create_access_token, get_current_user, verify_password, fake_user
 from fastapi import FastAPI, Depends, HTTPException
 from auth import get_current_user
+from fastapi.middleware.cors import CORSMiddleware
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # o pon ["http://localhost:3000"] si querés más seguridad
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 app = FastAPI()
 
