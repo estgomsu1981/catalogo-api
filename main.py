@@ -7,6 +7,9 @@ from fastapi import FastAPI, Depends, HTTPException
 from auth import get_current_user
 from fastapi.middleware.cors import CORSMiddleware
 
+app = FastAPI()
+
+
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # o pon ["http://localhost:3000"] si querés más seguridad
@@ -14,9 +17,6 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
-app = FastAPI()
-
 
 @app.get("/test-db")
 def test_db():
